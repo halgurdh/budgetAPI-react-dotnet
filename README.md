@@ -1,4 +1,4 @@
-# budgetAPI-react-dontnet
+# budgetAPI-react-dotnet
 
 ## How to run the solution.
 ### Database configuration
