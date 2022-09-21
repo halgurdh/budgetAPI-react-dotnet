@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "4553efc0-0550-4253-8af0-4424d4ed91b8": {
+      "ProjectGuid": "4553efc0-0550-4253-8af0-4424d4ed91b8",
+      "DisplayName": "BudgetApi",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
