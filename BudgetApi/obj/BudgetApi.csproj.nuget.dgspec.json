@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\BudgetApi\\BudgetApi\\BudgetApi.csproj": {}
+    "G:\\Projects\\budgetAPI-react-dotnet\\BudgetApi\\BudgetApi.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\BudgetApi\\BudgetApi\\BudgetApi.csproj": {
+    "G:\\Projects\\budgetAPI-react-dotnet\\BudgetApi\\BudgetApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\BudgetApi\\BudgetApi\\BudgetApi.csproj",
+        "projectUniqueName": "G:\\Projects\\budgetAPI-react-dotnet\\BudgetApi\\BudgetApi.csproj",
         "projectName": "BudgetApi",
-        "projectPath": "D:\\Projects\\BudgetApi\\BudgetApi\\BudgetApi.csproj",
+        "projectPath": "G:\\Projects\\budgetAPI-react-dotnet\\BudgetApi\\BudgetApi.csproj",
         "packagesPath": "C:\\Users\\halgu\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\BudgetApi\\BudgetApi\\obj\\",
+        "outputPath": "G:\\Projects\\budgetAPI-react-dotnet\\BudgetApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\halgu\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -77,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
