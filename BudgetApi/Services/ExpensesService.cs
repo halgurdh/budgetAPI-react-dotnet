@@ -11,7 +11,22 @@ namespace BudgetApi.Services
 
             app.MapGet("/getExpenseById/{expenseId}", async (int expenseId) =>
             {
-                Expenses expenseToReturn = await ExpenseRepository.GetMonthlyExpenseById(expenseId);
+                Expenses expenseToReturn = await ExpenseRepository.GetExpenseById(expenseId);
+
+                if (expenseToReturn != null)
+                {
+                    return Results.Ok(expenseToReturn);
+                }
+                else
+                {
+                    return Results.BadRequest();
+                }
+
+            }).WithTags("Expenses EndPoints");
+
+            app.MapGet("/getMonthlyExpense/{month}", async (int month) =>
+            {
+                List<Expenses> expenseToReturn = await ExpenseRepository.GetMonthlyExpenses(month);
 
                 if (expenseToReturn != null)
                 {

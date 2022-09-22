@@ -11,7 +11,22 @@ namespace BudgetApi.Services
 
             app.MapGet("/getIncomeById/{incomeId}", async (int incomeId) =>
             {
-                Income incomeToReturn = await IncomeRepository.GetMonthlyIncomeById(incomeId);
+                Income incomeToReturn = await IncomeRepository.GetIncomeById(incomeId);
+
+                if (incomeToReturn != null)
+                {
+                    return Results.Ok(incomeToReturn);
+                }
+                else
+                {
+                    return Results.BadRequest();
+                }
+
+            }).WithTags("Income EndPoints");
+
+            app.MapGet("/getMonthlyIncome/{month}", async (int month) =>
+            {
+                List<Income> incomeToReturn = await IncomeRepository.GetMonthlyIncome(month);
 
                 if (incomeToReturn != null)
                 {

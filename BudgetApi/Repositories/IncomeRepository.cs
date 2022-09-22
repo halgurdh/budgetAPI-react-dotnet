@@ -12,11 +12,19 @@ namespace BudgetApi.Data
             }
         }
 
-        internal async static Task<Income> GetMonthlyIncomeById(int month)
+        internal async static Task<Income> GetIncomeById(int month)
         {
             using (var db = new IncomeDBContext())
             {
                 return await db.Income.FirstOrDefaultAsync(budget => budget.Id == month);
+            }
+        }
+
+        internal async static Task<List<Income>> GetMonthlyIncome(int month)
+        {
+            using (var db = new IncomeDBContext())
+            {
+                return await db.Income.Where(income => income.Date.Month == month).ToListAsync();
             }
         }
 
@@ -60,7 +68,7 @@ namespace BudgetApi.Data
             {
                 try
                 {
-                    Income postToDelete = await GetMonthlyIncomeById(expenseId);
+                    Income postToDelete = await GetIncomeById(expenseId);
 
                     db.Income.Remove(postToDelete);
 

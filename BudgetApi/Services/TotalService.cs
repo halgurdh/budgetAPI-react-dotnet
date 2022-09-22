@@ -11,11 +11,26 @@ namespace BudgetApi.Services
 
             app.MapGet("/getTotalById/{totalId}", async (int totalId) =>
             {
-                Total totalToReturn = await TotalRepository.GetMonthlyTotalById(totalId);
+                Total totalToReturn = await TotalRepository.GetTotalById(totalId);
 
                 if (totalToReturn != null)
                 {
                     return Results.Ok(totalToReturn);
+                }
+                else
+                {
+                    return Results.BadRequest();
+                }
+
+            }).WithTags("Total EndPoints");
+
+            app.MapGet("/getMonthlyTotal/{month}", async (int month) =>
+            {
+                List<Total> incomeToReturn = await TotalRepository.GetMonthlyTotal(month);
+
+                if (incomeToReturn != null)
+                {
+                    return Results.Ok(incomeToReturn);
                 }
                 else
                 {

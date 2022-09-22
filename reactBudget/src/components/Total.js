@@ -5,16 +5,18 @@ import moment from "moment";
 export default function Total() {
   const [Total, setTotal] = useState([]);
 
-  function getTotal() {
-    const url = Constants.API_URL_GET_ALL_total;
+  function getMontlyTotal(month) {
+    const url = `${Constants.API_URL_GET_Montly_Total}/${month}`;
 
     fetch(url, {
       method: "GET",
     })
       .then((response) => response.json())
-      .then((totalFromServer) => {
-        console.log(totalFromServer);
-        setTotal(totalFromServer);
+      .then((responseFromServer) => {
+        if(responseFromServer.length <= 0) {
+          alert('No data found');
+        }
+        setTotal(responseFromServer);
       })
       .catch((error) => {
         console.log(error);
@@ -22,11 +24,24 @@ export default function Total() {
       });
   }
 
-  function calculateTotalByMonth() {}
-
   return (
     <div>
-      <button onClick={getTotal} className="btn btn-dark btn-lg w-100">
+      <label>Month</label>
+      <select className="d-block" id="month" name="Month">
+        <option value="1">January</option>
+        <option value="2">February</option>
+        <option value="3">March</option>
+        <option value="4">April</option>
+        <option value="5">May</option>
+        <option value="6">June</option>
+        <option value="7">July</option>
+        <option value="8">August</option>
+        <option value="9">September</option>
+        <option value="10">Oktober</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+      </select>
+      <button onClick={() => getMontlyTotal(document.getElementById('month').value)} className="btn btn-dark btn-lg w-100 mt-4">
         Get total
       </button>
 
@@ -35,6 +50,7 @@ export default function Total() {
   );
 
   function rendertotalTable() {
+    console.log(Total);
     return (
       <div>
         <div className="table-responsive mt-5">
@@ -45,11 +61,11 @@ export default function Total() {
                 <th scope="col">Date</th>
                 <th scope="col">Name</th>
                 <th scope="col">Value</th>
-                <th scope="col">CRUD</th>
               </tr>
             </thead>
             <tbody>
-              {Total.map((total) => (
+              {
+              Total.map((total) => (
                 <tr key={total.id}>
                   <th scope="row">{total.id}</th>
                   <td>{moment(total.date).format("DD/MM/yyyy")}</td>

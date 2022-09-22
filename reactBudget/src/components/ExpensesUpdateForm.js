@@ -42,6 +42,7 @@ export default function ExpensesUpdateForm(props) {
       });
 
     props.onExpenseUpdated(expenseToUpdate);
+
   };
 
   return (

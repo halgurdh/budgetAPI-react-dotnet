@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace BudgetApi.Data
 {
@@ -12,11 +13,19 @@ namespace BudgetApi.Data
             }
         }
 
-        internal async static Task<Expenses> GetMonthlyExpenseById(int month)
+        internal async static Task<Expenses> GetExpenseById(int expenseId)
         {
             using (var db = new ExpensesDBContext())
             {
-                return await db.Expenses.FirstOrDefaultAsync(budget => budget.Id == month);
+                return await db.Expenses.FirstOrDefaultAsync(expenses => expenses.Id == expenseId);
+            }
+        }
+
+        internal async static Task<List<Expenses>> GetMonthlyExpenses(int month)
+        {
+            using (var db = new ExpensesDBContext())
+            {
+                return await db.Expenses.Where(expenses => expenses.Date.Month == month).ToListAsync();
             }
         }
 
@@ -60,7 +69,7 @@ namespace BudgetApi.Data
             {
                 try
                 {
-                    Expenses postToDelete = await GetMonthlyExpenseById(expenseId);
+                    Expenses postToDelete = await GetExpenseById(expenseId);
 
                     db.Expenses.Remove(postToDelete);
 

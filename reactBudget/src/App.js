@@ -4,6 +4,7 @@ import Expenses from "./components/Expenses";
 import Income from "./components/Income";
 import NavBar from "./components/NavBar";
 import { PieChart } from "./components/PieChart";
+import Total from "./components/Total";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
               <Route path="/" element={<NavBar />} />
               <Route path="/expenses" element={<Expenses />} />
               <Route path="/income" element={<Income />} />
+              <Route path="/total" element={<Total />} />
               <Route path="/dashboard" element={<PieChart />} />
             </Routes>
           </div>

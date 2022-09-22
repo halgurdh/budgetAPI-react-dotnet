@@ -12,11 +12,19 @@ namespace BudgetApi.Data
             }
         }
 
-        internal async static Task<Total> GetMonthlyTotalById(int month)
+        internal async static Task<Total> GetTotalById(int month)
         {
             using (var db = new TotalDBContext())
             {
                 return await db.Total.FirstOrDefaultAsync(budget => budget.Id == month);
+            }
+        }
+
+        internal async static Task<List<Total>> GetMonthlyTotal(int month)
+        {
+            using (var db = new TotalDBContext())
+            {
+                return await db.Total.Where(total => total.Date.Month == month).ToListAsync();
             }
         }
 
@@ -60,7 +68,7 @@ namespace BudgetApi.Data
             {
                 try
                 {
-                    Total postToDelete = await GetMonthlyTotalById(totalId);
+                    Total postToDelete = await GetTotalById(totalId);
 
                     db.Total.Remove(postToDelete);
 

@@ -12,6 +12,10 @@ export default function NavBar() {
     navigate("/income");
   };
 
+  const getMontlyTotal = () => {
+    navigate("/total");
+  };
+
   const dashboard = () => {
     navigate("/dashboard");
   };
@@ -27,6 +31,11 @@ export default function NavBar() {
         <div className="col">
           <button onClick={getIncome} className="btn btn-dark">
             Get Income
+          </button>
+        </div>
+        <div className="col">
+          <button onClick={getMontlyTotal} className="btn btn-dark">
+            Get Total
           </button>
         </div>
         <div className="col">
