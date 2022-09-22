@@ -7,7 +7,7 @@ namespace BudgetApi.Services
         public void IncomeBuilder(WebApplication app)
         {
             app.MapGet("/getAllIncome", async () => await IncomeRepository.GetIncomeAsync())
-            .WithTags("income EndPoints");
+            .WithTags("Income EndPoints");
 
             app.MapGet("/getIncomeById/{incomeId}", async (int incomeId) =>
             {

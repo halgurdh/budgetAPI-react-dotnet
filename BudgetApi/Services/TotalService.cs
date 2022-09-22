@@ -7,7 +7,7 @@ namespace BudgetApi.Services
         public void TotalBuilder(WebApplication app)
         {
             app.MapGet("/getAllTotal", async () => await TotalRepository.GetTotalAsync())
-            .WithTags("total EndPoints");
+            .WithTags("Total EndPoints");
 
             app.MapGet("/getTotalById/{totalId}", async (int totalId) =>
             {
@@ -56,6 +56,8 @@ namespace BudgetApi.Services
 
             app.MapPut("/updateTotal", async (Total totalToUpdate) =>
             {
+                //Expenses expenses = await ExpenseRepository.GetExpenseAsync();
+                
                 bool updateSuccessful = await TotalRepository.UpdateTotalAsync(totalToUpdate);
 
                 if (updateSuccessful)

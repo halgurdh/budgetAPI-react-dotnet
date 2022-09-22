@@ -7,7 +7,7 @@ namespace BudgetApi.Services
         public void ExpenseBuilder(WebApplication app)
         {
             app.MapGet("/getAllExpenses", async () => await ExpenseRepository.GetExpenseAsync())
-            .WithTags("expense EndPoints");
+            .WithTags("Expenses EndPoints");
 
             app.MapGet("/getExpenseById/{expenseId}", async (int expenseId) =>
             {
@@ -51,6 +51,7 @@ namespace BudgetApi.Services
                 {
                     return Results.BadRequest();
                 }
+
 
             }).WithTags("Expenses EndPoints");
 
