@@ -20,13 +20,13 @@ namespace BudgetApi.Data
             }
         }
 
-        internal async static Task<bool> CreateTotalAsync(Total expenseToCreate)
+        internal async static Task<bool> CreateTotalAsync(Total totalToCreate)
         {
             using (var db = new TotalDBContext())
             {
                 try
                 {
-                    db.Total.AddAsync(expenseToCreate);
+                    db.Total.AddAsync(totalToCreate);
 
                     return await db.SaveChangesAsync() >= 1;
                 }
@@ -37,13 +37,13 @@ namespace BudgetApi.Data
             }
         }
 
-        internal async static Task<bool> UpdateTotalAsync(Total expenseToUpdate)
+        internal async static Task<bool> UpdateTotalAsync(Total totalToUpdate)
         {
             using (var db = new TotalDBContext())
             {
                 try
                 {
-                    db.Total.Update(expenseToUpdate);
+                    db.Total.Update(totalToUpdate);
 
                     return await db.SaveChangesAsync() >= 1;
                 }
@@ -54,13 +54,13 @@ namespace BudgetApi.Data
             }
         }
 
-        internal async static Task<bool> DeleteTotalAsync(int expenseId)
+        internal async static Task<bool> DeleteTotalAsync(int totalId)
         {
             using (var db = new TotalDBContext())
             {
                 try
                 {
-                    Total postToDelete = await GetMonthlyTotalById(expenseId);
+                    Total postToDelete = await GetMonthlyTotalById(totalId);
 
                     db.Total.Remove(postToDelete);
 
