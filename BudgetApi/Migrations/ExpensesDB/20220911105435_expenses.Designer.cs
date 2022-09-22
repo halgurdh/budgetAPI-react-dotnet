@@ -11,7 +11,6 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BudgetApi.Migrations.ExpensesDB
 {
-    [DbContext(typeof(ExpensesDBContext))]
     [Migration("20220911105435_income")]
     partial class income
     {

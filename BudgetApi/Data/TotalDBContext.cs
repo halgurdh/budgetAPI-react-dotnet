@@ -20,7 +20,7 @@ namespace BudgetApi.Data
             {
                 expensesToSeed[i - 1] = new Total
                 {
-                    Id = i,
+                    TotalId = i,
                     Date = DateTime.Now,
                     Value = 0,
                     Name = "testTotal"

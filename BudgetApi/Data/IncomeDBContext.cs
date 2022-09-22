@@ -14,13 +14,16 @@ namespace BudgetApi.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Income>()
+            .HasMany<Category>(s => s.Categories);
+
             Income[] expensesToSeed = new Income[12];
 
             for (int i = 1; i <= expensesToSeed.Length; i++)
             {
-                expensesToSeed[i-1] = new Income
+                expensesToSeed[i - 1] = new Income
                 {
-                    Id = i,
+                    IncomeId = i,
                     Date = DateTime.Now,
                     Value = 0,
                     Name = "testIncome"

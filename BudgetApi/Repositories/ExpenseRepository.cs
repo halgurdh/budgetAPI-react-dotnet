@@ -17,7 +17,7 @@ namespace BudgetApi.Data
         {
             using (var db = new ExpensesDBContext())
             {
-                return await db.Expenses.FirstOrDefaultAsync(expenses => expenses.Id == expenseId);
+                return await db.Expenses.FirstOrDefaultAsync(expenses => expenses.ExpensesId == expenseId);
             }
         }
 

@@ -4,16 +4,18 @@ using BudgetApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace BudgetApi.Migrations.ExpensesDB
+namespace BudgetApi.Migrations
 {
-    [DbContext(typeof(ExpensesDBContext))]
-    partial class ExpensesDBContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(IncomeDBContext))]
+    [Migration("20220922165751_category")]
+    partial class category
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,6 +35,9 @@ namespace BudgetApi.Migrations.ExpensesDB
                     b.Property<int>("ExpenseId")
                         .HasColumnType("int");
 
+                    b.Property<int>("ExpensesId")
+                        .HasColumnType("int");
+
                     b.Property<int>("IncomeId")
                         .HasColumnType("int");
 
@@ -42,7 +47,7 @@ namespace BudgetApi.Migrations.ExpensesDB
 
                     b.HasKey("CategoryId");
 
-                    b.HasIndex("ExpenseId");
+                    b.HasIndex("ExpensesId");
 
                     b.HasIndex("IncomeId");
 
@@ -70,92 +75,6 @@ namespace BudgetApi.Migrations.ExpensesDB
                     b.HasKey("ExpensesId");
 
                     b.ToTable("Expenses");
-
-                    b.HasData(
-                        new
-                        {
-                            ExpensesId = 1,
-                            Date = new DateTime(2022, 9, 22, 18, 57, 18, 382, DateTimeKind.Local).AddTicks(1894),
-                            Name = "testExpense",
-                            Value = 0.0
-                        },
-                        new
-                        {
-                            ExpensesId = 2,
-                            Date = new DateTime(2022, 9, 22, 18, 57, 18, 382, DateTimeKind.Local).AddTicks(1925),
-                            Name = "testExpense",
-                            Value = 0.0
-                        },
-                        new
-                        {
-                            ExpensesId = 3,
-                            Date = new DateTime(2022, 9, 22, 18, 57, 18, 382, DateTimeKind.Local).AddTicks(1927),
-                            Name = "testExpense",
-                            Value = 0.0
-                        },
-                        new
-                        {
-                            ExpensesId = 4,
-                            Date = new DateTime(2022, 9, 22, 18, 57, 18, 382, DateTimeKind.Local).AddTicks(1928),
-                            Name = "testExpense",
-                            Value = 0.0
-                        },
-                        new
-                        {
-                            ExpensesId = 5,
-                            Date = new DateTime(2022, 9, 22, 18, 57, 18, 382, DateTimeKind.Local).AddTicks(1930),
-                            Name = "testExpense",
-                            Value = 0.0
-                        },
-                        new
-                        {
-                            ExpensesId = 6,
-                            Date = new DateTime(2022, 9, 22, 18, 57, 18, 382, DateTimeKind.Local).AddTicks(1931),
-                            Name = "testExpense",
-                            Value = 0.0
-                        },
-                        new
-                        {
-                            ExpensesId = 7,
-                            Date = new DateTime(2022, 9, 22, 18, 57, 18, 382, DateTimeKind.Local).AddTicks(1933),
-                            Name = "testExpense",
-                            Value = 0.0
-                        },
-                        new
-                        {
-                            ExpensesId = 8,
-                            Date = new DateTime(2022, 9, 22, 18, 57, 18, 382, DateTimeKind.Local).AddTicks(1934),
-                            Name = "testExpense",
-                            Value = 0.0
-                        },
-                        new
-                        {
-                            ExpensesId = 9,
-                            Date = new DateTime(2022, 9, 22, 18, 57, 18, 382, DateTimeKind.Local).AddTicks(1936),
-                            Name = "testExpense",
-                            Value = 0.0
-                        },
-                        new
-                        {
-                            ExpensesId = 10,
-                            Date = new DateTime(2022, 9, 22, 18, 57, 18, 382, DateTimeKind.Local).AddTicks(1937),
-                            Name = "testExpense",
-                            Value = 0.0
-                        },
-                        new
-                        {
-                            ExpensesId = 11,
-                            Date = new DateTime(2022, 9, 22, 18, 57, 18, 382, DateTimeKind.Local).AddTicks(1939),
-                            Name = "testExpense",
-                            Value = 0.0
-                        },
-                        new
-                        {
-                            ExpensesId = 12,
-                            Date = new DateTime(2022, 9, 22, 18, 57, 18, 382, DateTimeKind.Local).AddTicks(1974),
-                            Name = "testExpense",
-                            Value = 0.0
-                        });
                 });
 
             modelBuilder.Entity("BudgetApi.Data.Income", b =>
@@ -179,13 +98,99 @@ namespace BudgetApi.Migrations.ExpensesDB
                     b.HasKey("IncomeId");
 
                     b.ToTable("Income");
+
+                    b.HasData(
+                        new
+                        {
+                            IncomeId = 1,
+                            Date = new DateTime(2022, 9, 22, 18, 57, 51, 93, DateTimeKind.Local).AddTicks(2789),
+                            Name = "testIncome",
+                            Value = 0.0
+                        },
+                        new
+                        {
+                            IncomeId = 2,
+                            Date = new DateTime(2022, 9, 22, 18, 57, 51, 93, DateTimeKind.Local).AddTicks(2830),
+                            Name = "testIncome",
+                            Value = 0.0
+                        },
+                        new
+                        {
+                            IncomeId = 3,
+                            Date = new DateTime(2022, 9, 22, 18, 57, 51, 93, DateTimeKind.Local).AddTicks(2832),
+                            Name = "testIncome",
+                            Value = 0.0
+                        },
+                        new
+                        {
+                            IncomeId = 4,
+                            Date = new DateTime(2022, 9, 22, 18, 57, 51, 93, DateTimeKind.Local).AddTicks(2833),
+                            Name = "testIncome",
+                            Value = 0.0
+                        },
+                        new
+                        {
+                            IncomeId = 5,
+                            Date = new DateTime(2022, 9, 22, 18, 57, 51, 93, DateTimeKind.Local).AddTicks(2835),
+                            Name = "testIncome",
+                            Value = 0.0
+                        },
+                        new
+                        {
+                            IncomeId = 6,
+                            Date = new DateTime(2022, 9, 22, 18, 57, 51, 93, DateTimeKind.Local).AddTicks(2836),
+                            Name = "testIncome",
+                            Value = 0.0
+                        },
+                        new
+                        {
+                            IncomeId = 7,
+                            Date = new DateTime(2022, 9, 22, 18, 57, 51, 93, DateTimeKind.Local).AddTicks(2838),
+                            Name = "testIncome",
+                            Value = 0.0
+                        },
+                        new
+                        {
+                            IncomeId = 8,
+                            Date = new DateTime(2022, 9, 22, 18, 57, 51, 93, DateTimeKind.Local).AddTicks(2839),
+                            Name = "testIncome",
+                            Value = 0.0
+                        },
+                        new
+                        {
+                            IncomeId = 9,
+                            Date = new DateTime(2022, 9, 22, 18, 57, 51, 93, DateTimeKind.Local).AddTicks(2841),
+                            Name = "testIncome",
+                            Value = 0.0
+                        },
+                        new
+                        {
+                            IncomeId = 10,
+                            Date = new DateTime(2022, 9, 22, 18, 57, 51, 93, DateTimeKind.Local).AddTicks(2842),
+                            Name = "testIncome",
+                            Value = 0.0
+                        },
+                        new
+                        {
+                            IncomeId = 11,
+                            Date = new DateTime(2022, 9, 22, 18, 57, 51, 93, DateTimeKind.Local).AddTicks(2843),
+                            Name = "testIncome",
+                            Value = 0.0
+                        },
+                        new
+                        {
+                            IncomeId = 12,
+                            Date = new DateTime(2022, 9, 22, 18, 57, 51, 93, DateTimeKind.Local).AddTicks(2845),
+                            Name = "testIncome",
+                            Value = 0.0
+                        });
                 });
 
             modelBuilder.Entity("BudgetApi.Data.Category", b =>
                 {
                     b.HasOne("BudgetApi.Data.Expenses", "Expenses")
                         .WithMany("Categories")
-                        .HasForeignKey("ExpenseId")
+                        .HasForeignKey("ExpensesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

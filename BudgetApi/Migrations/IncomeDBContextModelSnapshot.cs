@@ -22,13 +22,43 @@ namespace BudgetApi.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("BudgetApi.Data.Income", b =>
+            modelBuilder.Entity("BudgetApi.Data.Category", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"), 1L, 1);
+
+                    b.Property<int>("ExpenseId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ExpensesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IncomeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CategoryId");
+
+                    b.HasIndex("ExpensesId");
+
+                    b.HasIndex("IncomeId");
+
+                    b.ToTable("Category");
+                });
+
+            modelBuilder.Entity("BudgetApi.Data.Expenses", b =>
+                {
+                    b.Property<int>("ExpensesId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ExpensesId"), 1L, 1);
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -40,95 +70,147 @@ namespace BudgetApi.Migrations
                     b.Property<double>("Value")
                         .HasColumnType("float");
 
-                    b.HasKey("Id");
+                    b.HasKey("ExpensesId");
+
+                    b.ToTable("Expenses");
+                });
+
+            modelBuilder.Entity("BudgetApi.Data.Income", b =>
+                {
+                    b.Property<int>("IncomeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IncomeId"), 1L, 1);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Value")
+                        .HasColumnType("float");
+
+                    b.HasKey("IncomeId");
 
                     b.ToTable("Income");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            Date = new DateTime(2022, 9, 11, 12, 54, 12, 329, DateTimeKind.Local).AddTicks(758),
+                            IncomeId = 1,
+                            Date = new DateTime(2022, 9, 22, 18, 57, 51, 93, DateTimeKind.Local).AddTicks(2789),
                             Name = "testIncome",
                             Value = 0.0
                         },
                         new
                         {
-                            Id = 2,
-                            Date = new DateTime(2022, 9, 11, 12, 54, 12, 329, DateTimeKind.Local).AddTicks(795),
+                            IncomeId = 2,
+                            Date = new DateTime(2022, 9, 22, 18, 57, 51, 93, DateTimeKind.Local).AddTicks(2830),
                             Name = "testIncome",
                             Value = 0.0
                         },
                         new
                         {
-                            Id = 3,
-                            Date = new DateTime(2022, 9, 11, 12, 54, 12, 329, DateTimeKind.Local).AddTicks(797),
+                            IncomeId = 3,
+                            Date = new DateTime(2022, 9, 22, 18, 57, 51, 93, DateTimeKind.Local).AddTicks(2832),
                             Name = "testIncome",
                             Value = 0.0
                         },
                         new
                         {
-                            Id = 4,
-                            Date = new DateTime(2022, 9, 11, 12, 54, 12, 329, DateTimeKind.Local).AddTicks(798),
+                            IncomeId = 4,
+                            Date = new DateTime(2022, 9, 22, 18, 57, 51, 93, DateTimeKind.Local).AddTicks(2833),
                             Name = "testIncome",
                             Value = 0.0
                         },
                         new
                         {
-                            Id = 5,
-                            Date = new DateTime(2022, 9, 11, 12, 54, 12, 329, DateTimeKind.Local).AddTicks(800),
+                            IncomeId = 5,
+                            Date = new DateTime(2022, 9, 22, 18, 57, 51, 93, DateTimeKind.Local).AddTicks(2835),
                             Name = "testIncome",
                             Value = 0.0
                         },
                         new
                         {
-                            Id = 6,
-                            Date = new DateTime(2022, 9, 11, 12, 54, 12, 329, DateTimeKind.Local).AddTicks(801),
+                            IncomeId = 6,
+                            Date = new DateTime(2022, 9, 22, 18, 57, 51, 93, DateTimeKind.Local).AddTicks(2836),
                             Name = "testIncome",
                             Value = 0.0
                         },
                         new
                         {
-                            Id = 7,
-                            Date = new DateTime(2022, 9, 11, 12, 54, 12, 329, DateTimeKind.Local).AddTicks(803),
+                            IncomeId = 7,
+                            Date = new DateTime(2022, 9, 22, 18, 57, 51, 93, DateTimeKind.Local).AddTicks(2838),
                             Name = "testIncome",
                             Value = 0.0
                         },
                         new
                         {
-                            Id = 8,
-                            Date = new DateTime(2022, 9, 11, 12, 54, 12, 329, DateTimeKind.Local).AddTicks(804),
+                            IncomeId = 8,
+                            Date = new DateTime(2022, 9, 22, 18, 57, 51, 93, DateTimeKind.Local).AddTicks(2839),
                             Name = "testIncome",
                             Value = 0.0
                         },
                         new
                         {
-                            Id = 9,
-                            Date = new DateTime(2022, 9, 11, 12, 54, 12, 329, DateTimeKind.Local).AddTicks(806),
+                            IncomeId = 9,
+                            Date = new DateTime(2022, 9, 22, 18, 57, 51, 93, DateTimeKind.Local).AddTicks(2841),
                             Name = "testIncome",
                             Value = 0.0
                         },
                         new
                         {
-                            Id = 10,
-                            Date = new DateTime(2022, 9, 11, 12, 54, 12, 329, DateTimeKind.Local).AddTicks(808),
+                            IncomeId = 10,
+                            Date = new DateTime(2022, 9, 22, 18, 57, 51, 93, DateTimeKind.Local).AddTicks(2842),
                             Name = "testIncome",
                             Value = 0.0
                         },
                         new
                         {
-                            Id = 11,
-                            Date = new DateTime(2022, 9, 11, 12, 54, 12, 329, DateTimeKind.Local).AddTicks(809),
+                            IncomeId = 11,
+                            Date = new DateTime(2022, 9, 22, 18, 57, 51, 93, DateTimeKind.Local).AddTicks(2843),
                             Name = "testIncome",
                             Value = 0.0
                         },
                         new
                         {
-                            Id = 12,
-                            Date = new DateTime(2022, 9, 11, 12, 54, 12, 329, DateTimeKind.Local).AddTicks(810),
+                            IncomeId = 12,
+                            Date = new DateTime(2022, 9, 22, 18, 57, 51, 93, DateTimeKind.Local).AddTicks(2845),
                             Name = "testIncome",
                             Value = 0.0
                         });
+                });
+
+            modelBuilder.Entity("BudgetApi.Data.Category", b =>
+                {
+                    b.HasOne("BudgetApi.Data.Expenses", "Expenses")
+                        .WithMany("Categories")
+                        .HasForeignKey("ExpensesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BudgetApi.Data.Income", "Income")
+                        .WithMany("Categories")
+                        .HasForeignKey("IncomeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Expenses");
+
+                    b.Navigation("Income");
+                });
+
+            modelBuilder.Entity("BudgetApi.Data.Expenses", b =>
+                {
+                    b.Navigation("Categories");
+                });
+
+            modelBuilder.Entity("BudgetApi.Data.Income", b =>
+                {
+                    b.Navigation("Categories");
                 });
 #pragma warning restore 612, 618
         }

@@ -26,7 +26,7 @@ namespace BudgetApi.Services
 
             app.MapGet("/getMonthlyTotal/{month}", async (int month) =>
             {
-                List<Total> incomeToReturn = await TotalRepository.GetMonthlyTotal(month);
+                Total incomeToReturn = await TotalRepository.GetMonthlyTotal(month);
 
                 if (incomeToReturn != null)
                 {
@@ -54,11 +54,9 @@ namespace BudgetApi.Services
 
             }).WithTags("Total EndPoints");
 
-            app.MapPut("/updateTotal", async (Total totalToUpdate) =>
+            app.MapPut("/updateTotalMonth/{month}", async (int month) =>
             {
-                //Expenses expenses = await ExpenseRepository.GetExpenseAsync();
-                
-                bool updateSuccessful = await TotalRepository.UpdateTotalAsync(totalToUpdate);
+                bool updateSuccessful = await TotalRepository.UpdateTotalMonthAsync(month);
 
                 if (updateSuccessful)
                 {

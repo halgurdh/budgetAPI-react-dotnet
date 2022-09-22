@@ -8,10 +8,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace BudgetApi.Migrations.ExpensesDB
+namespace BudgetApi.Migrations.CategoryDB
 {
-    [DbContext(typeof(ExpensesDBContext))]
-    partial class ExpensesDBContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(CategoryDBContext))]
+    partial class CategoryDBContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -47,6 +47,15 @@ namespace BudgetApi.Migrations.ExpensesDB
                     b.HasIndex("IncomeId");
 
                     b.ToTable("Category");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            ExpenseId = 0,
+                            IncomeId = 0,
+                            Value = "Other"
+                        });
                 });
 
             modelBuilder.Entity("BudgetApi.Data.Expenses", b =>
@@ -70,92 +79,6 @@ namespace BudgetApi.Migrations.ExpensesDB
                     b.HasKey("ExpensesId");
 
                     b.ToTable("Expenses");
-
-                    b.HasData(
-                        new
-                        {
-                            ExpensesId = 1,
-                            Date = new DateTime(2022, 9, 22, 18, 57, 18, 382, DateTimeKind.Local).AddTicks(1894),
-                            Name = "testExpense",
-                            Value = 0.0
-                        },
-                        new
-                        {
-                            ExpensesId = 2,
-                            Date = new DateTime(2022, 9, 22, 18, 57, 18, 382, DateTimeKind.Local).AddTicks(1925),
-                            Name = "testExpense",
-                            Value = 0.0
-                        },
-                        new
-                        {
-                            ExpensesId = 3,
-                            Date = new DateTime(2022, 9, 22, 18, 57, 18, 382, DateTimeKind.Local).AddTicks(1927),
-                            Name = "testExpense",
-                            Value = 0.0
-                        },
-                        new
-                        {
-                            ExpensesId = 4,
-                            Date = new DateTime(2022, 9, 22, 18, 57, 18, 382, DateTimeKind.Local).AddTicks(1928),
-                            Name = "testExpense",
-                            Value = 0.0
-                        },
-                        new
-                        {
-                            ExpensesId = 5,
-                            Date = new DateTime(2022, 9, 22, 18, 57, 18, 382, DateTimeKind.Local).AddTicks(1930),
-                            Name = "testExpense",
-                            Value = 0.0
-                        },
-                        new
-                        {
-                            ExpensesId = 6,
-                            Date = new DateTime(2022, 9, 22, 18, 57, 18, 382, DateTimeKind.Local).AddTicks(1931),
-                            Name = "testExpense",
-                            Value = 0.0
-                        },
-                        new
-                        {
-                            ExpensesId = 7,
-                            Date = new DateTime(2022, 9, 22, 18, 57, 18, 382, DateTimeKind.Local).AddTicks(1933),
-                            Name = "testExpense",
-                            Value = 0.0
-                        },
-                        new
-                        {
-                            ExpensesId = 8,
-                            Date = new DateTime(2022, 9, 22, 18, 57, 18, 382, DateTimeKind.Local).AddTicks(1934),
-                            Name = "testExpense",
-                            Value = 0.0
-                        },
-                        new
-                        {
-                            ExpensesId = 9,
-                            Date = new DateTime(2022, 9, 22, 18, 57, 18, 382, DateTimeKind.Local).AddTicks(1936),
-                            Name = "testExpense",
-                            Value = 0.0
-                        },
-                        new
-                        {
-                            ExpensesId = 10,
-                            Date = new DateTime(2022, 9, 22, 18, 57, 18, 382, DateTimeKind.Local).AddTicks(1937),
-                            Name = "testExpense",
-                            Value = 0.0
-                        },
-                        new
-                        {
-                            ExpensesId = 11,
-                            Date = new DateTime(2022, 9, 22, 18, 57, 18, 382, DateTimeKind.Local).AddTicks(1939),
-                            Name = "testExpense",
-                            Value = 0.0
-                        },
-                        new
-                        {
-                            ExpensesId = 12,
-                            Date = new DateTime(2022, 9, 22, 18, 57, 18, 382, DateTimeKind.Local).AddTicks(1974),
-                            Name = "testExpense",
-                            Value = 0.0
-                        });
                 });
 
             modelBuilder.Entity("BudgetApi.Data.Income", b =>

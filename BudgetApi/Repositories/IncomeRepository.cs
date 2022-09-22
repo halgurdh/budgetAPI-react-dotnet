@@ -16,7 +16,7 @@ namespace BudgetApi.Data
         {
             using (var db = new IncomeDBContext())
             {
-                return await db.Income.FirstOrDefaultAsync(budget => budget.Id == month);
+                return await db.Income.FirstOrDefaultAsync(budget => budget.IncomeId == month);
             }
         }
 

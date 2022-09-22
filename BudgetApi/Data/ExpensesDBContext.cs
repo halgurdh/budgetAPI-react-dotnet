@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-
 namespace BudgetApi.Data
 {
     internal sealed class ExpensesDBContext : DbContext
@@ -14,13 +13,16 @@ namespace BudgetApi.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Expenses>()
+            .HasMany<Category>(s => s.Categories);
+
             Expenses[] expensesToSeed = new Expenses[12];
 
             for (int i = 1; i <= expensesToSeed.Length; i++)
             {
-                expensesToSeed[i-1] = new Expenses
+                expensesToSeed[i - 1] = new Expenses
                 {
-                    Id = i,
+                    ExpensesId = i,
                     Date = DateTime.Now,
                     Value = 0,
                     Name = "testExpense"
