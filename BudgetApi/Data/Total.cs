@@ -10,12 +10,6 @@ namespace BudgetApi.Data
 
         public double Value { get; set; }
 
-        public int ExpensesId { get; set; }
-
-        public Expenses Expenses { get; set; }
-
-        public int IncomeId { get; set; }
-
-        public Income Income { get; set; }
+        public ICollection<Category> Categories { get; set; }
     }
 }

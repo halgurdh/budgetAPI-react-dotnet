@@ -8,10 +8,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace BudgetApi.Migrations.CategoryDB
+namespace BudgetApi.Migrations
 {
-    [DbContext(typeof(CategoryDBContext))]
-    partial class CategoryDBContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(BudgetDBContext))]
+    partial class BudgetDBContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -36,6 +36,9 @@ namespace BudgetApi.Migrations.CategoryDB
                     b.Property<int>("IncomeId")
                         .HasColumnType("int");
 
+                    b.Property<int>("TotalId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Value")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -47,15 +50,6 @@ namespace BudgetApi.Migrations.CategoryDB
                     b.HasIndex("IncomeId");
 
                     b.ToTable("Category");
-
-                    b.HasData(
-                        new
-                        {
-                            CategoryId = 1,
-                            ExpenseId = 0,
-                            IncomeId = 0,
-                            Value = "Other"
-                        });
                 });
 
             modelBuilder.Entity("BudgetApi.Data.Expenses", b =>
@@ -73,10 +67,15 @@ namespace BudgetApi.Migrations.CategoryDB
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("TotalId")
+                        .HasColumnType("int");
+
                     b.Property<double>("Value")
                         .HasColumnType("float");
 
                     b.HasKey("ExpensesId");
+
+                    b.HasIndex("TotalId");
 
                     b.ToTable("Expenses");
                 });
@@ -96,12 +95,40 @@ namespace BudgetApi.Migrations.CategoryDB
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("TotalId")
+                        .HasColumnType("int");
+
                     b.Property<double>("Value")
                         .HasColumnType("float");
 
                     b.HasKey("IncomeId");
 
+                    b.HasIndex("TotalId");
+
                     b.ToTable("Income");
+                });
+
+            modelBuilder.Entity("BudgetApi.Data.Total", b =>
+                {
+                    b.Property<int>("TotalId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TotalId"), 1L, 1);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Value")
+                        .HasColumnType("float");
+
+                    b.HasKey("TotalId");
+
+                    b.ToTable("Total");
                 });
 
             modelBuilder.Entity("BudgetApi.Data.Category", b =>
@@ -118,9 +145,39 @@ namespace BudgetApi.Migrations.CategoryDB
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("BudgetApi.Data.Total", "Total")
+                        .WithMany("Categories")
+                        .HasForeignKey("IncomeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Expenses");
 
                     b.Navigation("Income");
+
+                    b.Navigation("Total");
+                });
+
+            modelBuilder.Entity("BudgetApi.Data.Expenses", b =>
+                {
+                    b.HasOne("BudgetApi.Data.Total", "Total")
+                        .WithMany("Expenses")
+                        .HasForeignKey("TotalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Total");
+                });
+
+            modelBuilder.Entity("BudgetApi.Data.Income", b =>
+                {
+                    b.HasOne("BudgetApi.Data.Total", "Total")
+                        .WithMany("Income")
+                        .HasForeignKey("TotalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Total");
                 });
 
             modelBuilder.Entity("BudgetApi.Data.Expenses", b =>
@@ -131,6 +188,15 @@ namespace BudgetApi.Migrations.CategoryDB
             modelBuilder.Entity("BudgetApi.Data.Income", b =>
                 {
                     b.Navigation("Categories");
+                });
+
+            modelBuilder.Entity("BudgetApi.Data.Total", b =>
+                {
+                    b.Navigation("Categories");
+
+                    b.Navigation("Expenses");
+
+                    b.Navigation("Income");
                 });
 #pragma warning restore 612, 618
         }

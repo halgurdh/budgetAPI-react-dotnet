@@ -6,7 +6,7 @@ namespace BudgetApi.Data
     {
         internal async static Task<List<Income>> GetIncomeAsync()
         {
-            using (var db = new IncomeDBContext())
+            using (var db = new BudgetDBContext())
             {
                 return await db.Income.ToListAsync();
             }
@@ -14,7 +14,7 @@ namespace BudgetApi.Data
 
         internal async static Task<Income> GetIncomeById(int month)
         {
-            using (var db = new IncomeDBContext())
+            using (var db = new BudgetDBContext())
             {
                 return await db.Income.FirstOrDefaultAsync(budget => budget.IncomeId == month);
             }
@@ -22,7 +22,7 @@ namespace BudgetApi.Data
 
         internal async static Task<List<Income>> GetMonthlyIncome(int month)
         {
-            using (var db = new IncomeDBContext())
+            using (var db = new BudgetDBContext())
             {
                 return await db.Income.Where(income => income.Date.Month == month).ToListAsync();
             }
@@ -30,7 +30,7 @@ namespace BudgetApi.Data
 
         internal async static Task<bool> CreateIncomeAsync(Income expenseToCreate)
         {
-            using (var db = new IncomeDBContext())
+            using (var db = new BudgetDBContext())
             {
                 try
                 {
@@ -47,7 +47,7 @@ namespace BudgetApi.Data
 
         internal async static Task<bool> UpdateIncomeAsync(Income expenseToUpdate)
         {
-            using (var db = new IncomeDBContext())
+            using (var db = new BudgetDBContext())
             {
                 try
                 {
@@ -64,7 +64,7 @@ namespace BudgetApi.Data
 
         internal async static Task<bool> DeleteIncomeAsync(int expenseId)
         {
-            using (var db = new IncomeDBContext())
+            using (var db = new BudgetDBContext())
             {
                 try
                 {

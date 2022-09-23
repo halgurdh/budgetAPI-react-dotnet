@@ -7,7 +7,7 @@ namespace BudgetApi.Data
     {
         internal async static Task<List<Category>> GetExpenseAsync()
         {
-            using (var db = new CategoryDBContext())
+            using (var db = new BudgetDBContext())
             {
                 return await db.Category.ToListAsync();
             }

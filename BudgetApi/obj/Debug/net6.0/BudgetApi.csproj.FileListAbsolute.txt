@@ -58,7 +58,6 @@ D:\Projects\BudgetApi\BudgetApi\obj\Debug\net6.0\BudgetApi.dll
 D:\Projects\BudgetApi\BudgetApi\obj\Debug\net6.0\ref\BudgetApi.dll
 D:\Projects\BudgetApi\BudgetApi\obj\Debug\net6.0\BudgetApi.pdb
 D:\Projects\BudgetApi\BudgetApi\obj\Debug\net6.0\BudgetApi.genruntimeconfig.cache
-D:\Projects\BudgetApi\BudgetApi\bin\Debug\net6.0\ref\BudgetApi.dll
 G:\Projects\BudgetApp\BudgetApi\bin\Debug\net6.0\appsettings.Development.json
 G:\Projects\BudgetApp\BudgetApi\bin\Debug\net6.0\appsettings.json
 G:\Projects\BudgetApp\BudgetApi\bin\Debug\net6.0\BudgetApi.exe
@@ -181,3 +180,4 @@ G:\Projects\budgetAPI-react-dotnet\BudgetApi\obj\Debug\net6.0\refint\BudgetApi.d
 G:\Projects\budgetAPI-react-dotnet\BudgetApi\obj\Debug\net6.0\BudgetApi.pdb
 G:\Projects\budgetAPI-react-dotnet\BudgetApi\obj\Debug\net6.0\BudgetApi.genruntimeconfig.cache
 G:\Projects\budgetAPI-react-dotnet\BudgetApi\obj\Debug\net6.0\ref\BudgetApi.dll
+D:\Projects\BudgetApi\BudgetApi\bin\Debug\net6.0\ref\BudgetApi.dll

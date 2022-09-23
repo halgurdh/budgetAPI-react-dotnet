@@ -24,21 +24,6 @@ namespace BudgetApi.Services
 
             }).WithTags("Total EndPoints");
 
-            app.MapGet("/getMonthlyTotal/{month}", async (int month) =>
-            {
-                Total incomeToReturn = await TotalRepository.GetMonthlyTotal(month);
-
-                if (incomeToReturn != null)
-                {
-                    return Results.Ok(incomeToReturn);
-                }
-                else
-                {
-                    return Results.BadRequest();
-                }
-
-            }).WithTags("Total EndPoints");
-
             app.MapPost("/createTotal", async (Total totalToCreate) =>
             {
                 bool createSuccessful = await TotalRepository.CreateTotalAsync(totalToCreate);
@@ -46,21 +31,6 @@ namespace BudgetApi.Services
                 if (createSuccessful)
                 {
                     return Results.Ok("Create Successful");
-                }
-                else
-                {
-                    return Results.BadRequest();
-                }
-
-            }).WithTags("Total EndPoints");
-
-            app.MapPut("/updateTotalMonth/{month}", async (int month) =>
-            {
-                bool updateSuccessful = await TotalRepository.UpdateTotalMonthAsync(month);
-
-                if (updateSuccessful)
-                {
-                    return Results.Ok("Update Successful");
                 }
                 else
                 {

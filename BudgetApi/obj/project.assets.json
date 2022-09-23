@@ -2234,11 +2234,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\Projects\\budgetAPI-react-dotnet\\BudgetApi\\BudgetApi.csproj",
+      "projectUniqueName": "D:\\Projects\\BudgetApi\\BudgetApi\\BudgetApi.csproj",
       "projectName": "BudgetApi",
-      "projectPath": "G:\\Projects\\budgetAPI-react-dotnet\\BudgetApi\\BudgetApi.csproj",
+      "projectPath": "D:\\Projects\\BudgetApi\\BudgetApi\\BudgetApi.csproj",
       "packagesPath": "C:\\Users\\halgu\\.nuget\\packages\\",
-      "outputPath": "G:\\Projects\\budgetAPI-react-dotnet\\BudgetApi\\obj\\",
+      "outputPath": "D:\\Projects\\BudgetApi\\BudgetApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\halgu\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2304,7 +2304,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }

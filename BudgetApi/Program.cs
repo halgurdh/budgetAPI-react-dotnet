@@ -44,7 +44,4 @@ expensesService.ExpenseBuilder(app);
 IncomeService incomeService = new IncomeService();
 incomeService.IncomeBuilder(app);
 
-TotalService TotalService = new TotalService();
-TotalService.TotalBuilder(app);
-
 app.Run();

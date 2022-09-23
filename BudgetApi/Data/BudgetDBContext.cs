@@ -3,9 +3,12 @@ using Microsoft.Extensions.Configuration;
 
 namespace BudgetApi.Data
 {
-    internal sealed class CategoryDBContext : DbContext
+    internal sealed class BudgetDBContext : DbContext
     {
         public DbSet<Category> Category { get; set; }
+        public DbSet<Expenses> Expenses { get; set; }
+        public DbSet<Income> Income { get; set; }
+        public DbSet<Total> Total { get; set; }
 
         string connectionString = new ConfigurationBuilder().AddJsonFile("appsettings.Development.json").Build().GetSection("ConnectionStrings")["DefaultConnection"];
 
@@ -23,18 +26,10 @@ namespace BudgetApi.Data
             .WithMany(g => g.Categories)
             .HasForeignKey(s => s.IncomeId);
 
-            Category[] CategoryToSeed = new Category[1];
-
-            for (int i = 1; i <= CategoryToSeed.Length; i++)
-            {
-                CategoryToSeed[i-1] = new Category
-                {
-                        CategoryId= i,
-                        Value="Other",
-                };
-            }
-
-            modelBuilder.Entity<Category>().HasData(CategoryToSeed);
+            modelBuilder.Entity<Category>()
+            .HasOne<Total>(s => s.Total)
+            .WithMany(g => g.Categories)
+            .HasForeignKey(s => s.IncomeId);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace BudgetApi.Data
     {
         internal async static Task<List<Expenses>> GetExpenseAsync()
         {
-            using (var db = new ExpensesDBContext())
+            using (var db = new BudgetDBContext())
             {
                 return await db.Expenses.ToListAsync();
             }
@@ -15,7 +15,7 @@ namespace BudgetApi.Data
 
         internal async static Task<Expenses> GetExpenseById(int expenseId)
         {
-            using (var db = new ExpensesDBContext())
+            using (var db = new BudgetDBContext())
             {
                 return await db.Expenses.FirstOrDefaultAsync(expenses => expenses.ExpensesId == expenseId);
             }
@@ -23,7 +23,7 @@ namespace BudgetApi.Data
 
         internal async static Task<List<Expenses>> GetMonthlyExpenses(int month)
         {
-            using (var db = new ExpensesDBContext())
+            using (var db = new BudgetDBContext())
             {
                 return await db.Expenses.Where(expenses => expenses.Date.Month == month).ToListAsync();
             }
@@ -31,7 +31,7 @@ namespace BudgetApi.Data
 
         internal async static Task<bool> CreateExpenseAsync(Expenses expenseToCreate)
         {
-            using (var db = new ExpensesDBContext())
+            using (var db = new BudgetDBContext())
             {
                 try
                 {
@@ -48,7 +48,7 @@ namespace BudgetApi.Data
 
         internal async static Task<bool> UpdateExpenseAsync(Expenses expenseToUpdate)
         {
-            using (var db = new ExpensesDBContext())
+            using (var db = new BudgetDBContext())
             {
                 try
                 {
@@ -65,7 +65,7 @@ namespace BudgetApi.Data
 
         internal async static Task<bool> DeleteExpenseAsync(int expenseId)
         {
-            using (var db = new ExpensesDBContext())
+            using (var db = new BudgetDBContext())
             {
                 try
                 {

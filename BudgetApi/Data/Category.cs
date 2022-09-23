@@ -10,9 +10,12 @@ namespace BudgetApi.Data
 
         public int IncomeId { get; set; }
 
+        public int TotalId { get; set; }
+
         public Expenses Expenses { get; set; }
 
         public Income Income { get; set; }
 
+        public Total Total { get; set; }
     }
 }
