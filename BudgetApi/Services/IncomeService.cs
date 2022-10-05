@@ -9,7 +9,7 @@ namespace BudgetApi.Services
             app.MapGet("/getAllIncome", async () => await IncomeRepository.GetIncomeAsync())
             .WithTags("Income EndPoints");
 
-            app.MapGet("/getIncomeById/{incomeId}", async (int incomeId) =>
+            app.MapGet("/getIncomeById/{incomeId}", async (Guid incomeId) =>
             {
                 Income incomeToReturn = await IncomeRepository.GetIncomeById(incomeId);
 
@@ -70,7 +70,7 @@ namespace BudgetApi.Services
             }).WithTags("Income EndPoints");
 
 
-            app.MapDelete("/deleteIncomeById/{incomeId}", async (int incomeId) =>
+            app.MapDelete("/deleteIncomeById/{incomeId}", async (Guid incomeId) =>
             {
                 bool deleteSuccessful = await IncomeRepository.DeleteIncomeAsync(incomeId);
 

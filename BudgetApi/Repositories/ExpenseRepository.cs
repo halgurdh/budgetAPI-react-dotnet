@@ -13,11 +13,11 @@ namespace BudgetApi.Data
             }
         }
 
-        internal async static Task<Expenses> GetExpenseById(int expenseId)
+        internal async static Task<Expenses> GetExpenseById(Guid expenseId)
         {
             using (var db = new BudgetDBContext())
             {
-                return await db.Expenses.FirstOrDefaultAsync(expenses => expenses.ExpensesId == expenseId);
+                return await db.Expenses.FirstOrDefaultAsync(expenses => expenses.ExpensesID == expenseId);
             }
         }
 
@@ -63,7 +63,7 @@ namespace BudgetApi.Data
             }
         }
 
-        internal async static Task<bool> DeleteExpenseAsync(int expenseId)
+        internal async static Task<bool> DeleteExpenseAsync(Guid expenseId)
         {
             using (var db = new BudgetDBContext())
             {

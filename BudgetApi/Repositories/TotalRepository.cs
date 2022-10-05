@@ -16,7 +16,7 @@ namespace BudgetApi.Data
         {
             using (var db = new BudgetDBContext())
             {
-                return await db.Total.FirstOrDefaultAsync(budget => budget.TotalId == month);
+                return await db.Total.FirstOrDefaultAsync(budget => int.Parse(budget.Date.ToString("MM")) == month);
             }
         }
 

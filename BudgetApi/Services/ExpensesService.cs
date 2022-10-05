@@ -9,7 +9,7 @@ namespace BudgetApi.Services
             app.MapGet("/getAllExpenses", async () => await ExpenseRepository.GetExpenseAsync())
             .WithTags("Expenses EndPoints");
 
-            app.MapGet("/getExpenseById/{expenseId}", async (int expenseId) =>
+            app.MapGet("/getExpenseById/{expenseId}", async (Guid expenseId) =>
             {
                 Expenses expenseToReturn = await ExpenseRepository.GetExpenseById(expenseId);
 
@@ -71,7 +71,7 @@ namespace BudgetApi.Services
             }).WithTags("Expenses EndPoints");
 
 
-            app.MapDelete("/deleteExpenseById/{expenseId}", async (int expenseId) =>
+            app.MapDelete("/deleteExpenseById/{expenseId}", async (Guid expenseId) =>
             {
                 bool deleteSuccessful = await ExpenseRepository.DeleteExpenseAsync(expenseId);
 

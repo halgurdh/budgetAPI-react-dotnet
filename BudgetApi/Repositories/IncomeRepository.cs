@@ -12,11 +12,11 @@ namespace BudgetApi.Data
             }
         }
 
-        internal async static Task<Income> GetIncomeById(int month)
+        internal async static Task<Income> GetIncomeById(Guid month)
         {
             using (var db = new BudgetDBContext())
             {
-                return await db.Income.FirstOrDefaultAsync(budget => budget.IncomeId == month);
+                return await db.Income.FirstOrDefaultAsync(budget => budget.IncomeID == month);
             }
         }
 
@@ -62,7 +62,7 @@ namespace BudgetApi.Data
             }
         }
 
-        internal async static Task<bool> DeleteIncomeAsync(int expenseId)
+        internal async static Task<bool> DeleteIncomeAsync(Guid expenseId)
         {
             using (var db = new BudgetDBContext())
             {

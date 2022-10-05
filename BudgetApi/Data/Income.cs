@@ -2,7 +2,7 @@ namespace BudgetApi.Data
 {
     public class Income
     {
-        public int IncomeId { get; set; }
+        public Guid IncomeID { get; set; }
 
         public string Name { get; set; }
 
