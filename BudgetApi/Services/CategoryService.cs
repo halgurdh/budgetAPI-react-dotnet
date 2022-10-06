@@ -2,7 +2,7 @@
 
 namespace BudgetApi.Services
 {
-    public class Categoryervice
+    public class CategoryService
     {
         public void CategoryBuilder(WebApplication app)
         {
