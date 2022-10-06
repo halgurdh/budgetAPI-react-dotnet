@@ -10,6 +10,6 @@ namespace BudgetApi.Data
 
         public double Value { get; set; }
 
-        public ICollection<Category> Categories { get; set; }
+        public Guid CategoryID { get; set; }
     }
 }

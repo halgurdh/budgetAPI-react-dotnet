@@ -16,40 +16,6 @@ namespace BudgetApi.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var expenseID = Guid.NewGuid();
-            var incomeID = Guid.NewGuid();
-            var totalID = Guid.NewGuid();
-
-            var expenseValue = 670.00;
-            var incomeValue = 2950.00;
-            var totalValue = incomeValue-expenseValue;
-
-            Expenses expensesToSeed = new Expenses{
-                ExpensesID = expenseID,
-                Categories = new List<Category>(),
-                Date = DateTime.Now,
-                Name = "Appartment",
-                Value = expenseValue
-            };
-
-            Income incomeToSeed = new Income
-            {
-                IncomeID = incomeID,
-                Categories = new List<Category>(),
-                Date = DateTime.Now,
-                Name = "Money B.V",
-                Value = incomeValue
-            };
-
-            Total totalToSeed = new Total
-            {
-                TotalID = totalID,
-                Categories = new List<Category>(),
-                Date = DateTime.Now,
-                Name = "Money B.V",
-                Value = totalValue
-            };
-
             string[] catagoryList = { "Rent", "Salary", "Other"};
 
             List<Category> catagoriesToSeed = new List<Category>();
@@ -59,16 +25,10 @@ namespace BudgetApi.Data
                 catagoriesToSeed.Add(new Category
                 {
                     CategoryID = Guid.NewGuid(),
-                    Name = catagoryList[i],
-                    ExpensesID = expenseID,
-                    IncomeID = incomeID,
-                    TotalID = totalID
+                    Name = catagoryList[i]
                 });
             }
 
-            modelBuilder.Entity<Expenses>().HasData(expensesToSeed);
-            modelBuilder.Entity<Income>().HasData(incomeToSeed);
-            modelBuilder.Entity<Total>().HasData(totalToSeed);
             modelBuilder.Entity<Category>().HasData(catagoriesToSeed);
         }
     }

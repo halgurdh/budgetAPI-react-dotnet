@@ -6,10 +6,11 @@ namespace BudgetApi.Data
 
         public string Name { get; set; }
 
-        public Guid ExpensesID { get; set; }
+        public ICollection<Expenses> Expenses { get; set; }
 
-        public Guid IncomeID { get; set; }
+        public ICollection<Income> Income { get; set; }
 
-        public Guid TotalID { get; set; }
+        public ICollection<Total> Total { get; set; }
+
     }
 }
