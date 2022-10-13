@@ -1,5 +1,15 @@
 # budgetAPI-react-dotnet
 
+## About
+API in as Back-end, ReactJS as Front-end. Budget APP CRUD operations for Expensens and Income.
+
+This project is still in the making and not finished, I would like to build more functoinality in the future.
+
+## Technologies used
+* React JS
+* .NET Framework
+* Entity Framework Core
+
 ## How to run the solution.
 ### Database configuration
 1. make sure ssms is installed.
