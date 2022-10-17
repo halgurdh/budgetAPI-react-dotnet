@@ -1,10 +1,11 @@
+import moment from "moment";
 import React, { useState } from "react";
 import Constants from "../utilities/Constants";
 
 export default function ExpensesUpdateForm(props) {
-    const [expenseData, setFormData] = useState({
-      name: props.Expense.name,
-      value: props.Expense.value
+  const [expenseData, setFormData] = useState({
+    name: props.Expense.name,
+    value: props.Expense.value,
   });
 
   const handleChange = (e) => {
@@ -18,9 +19,11 @@ export default function ExpensesUpdateForm(props) {
     e.preventDefault();
 
     const expenseToUpdate = {
-      id: props.Expense.id,
+      expensesID: props.Expense.expensesID,
       name: expenseData.name,
+      date: moment(Date.now()).format("yyyy-MM-DD"),
       value: expenseData.value,
+      categoryID: props.Expense.categoryID,
     };
 
     const url = Constants.API_URL_UPDATE_Expense;
@@ -42,7 +45,6 @@ export default function ExpensesUpdateForm(props) {
       });
 
     props.onExpenseUpdated(expenseToUpdate);
-
   };
 
   return (

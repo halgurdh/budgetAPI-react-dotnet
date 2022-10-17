@@ -5,16 +5,16 @@ import moment from "moment";
 export default function Total() {
   const [Total, setTotal] = useState([]);
 
-  function getMontlyTotal(month) {
-    const url = `${Constants.API_URL_GET_Montly_Total}/${month}`;
+  function getTotal() {
+    const url = Constants.API_URL_GET_ALL_Total;
 
     fetch(url, {
       method: "GET",
     })
       .then((response) => response.json())
       .then((responseFromServer) => {
-        if(responseFromServer.length <= 0) {
-          alert('No data found');
+        if (responseFromServer.length <= 0) {
+          alert("No data found");
         }
         setTotal(responseFromServer);
       })
@@ -26,48 +26,31 @@ export default function Total() {
 
   return (
     <div>
-      <label>Month</label>
-      <select className="d-block" id="month" name="Month">
-        <option value="1">January</option>
-        <option value="2">February</option>
-        <option value="3">March</option>
-        <option value="4">April</option>
-        <option value="5">May</option>
-        <option value="6">June</option>
-        <option value="7">July</option>
-        <option value="8">August</option>
-        <option value="9">September</option>
-        <option value="10">Oktober</option>
-        <option value="11">November</option>
-        <option value="12">December</option>
-      </select>
-      <button onClick={() => getMontlyTotal(document.getElementById('month').value)} className="btn btn-dark btn-lg w-100 mt-4">
-        Get total
+      <button onClick={getTotal} className="btn btn-dark btn-lg w-100">
+        Get Total
       </button>
 
-      {Total.length > 0 && rendertotalTable()}
+      {Total.length > 0 && renderTotalTable()}
     </div>
   );
 
-  function rendertotalTable() {
-    console.log(Total);
+  function renderTotalTable() {
     return (
       <div>
         <div className="table-responsive mt-5">
           <table className="table table-bordered border-dark">
             <thead>
               <tr>
-                <th scope="col">TotalId (PK)</th>
+                <th scope="col">TotalID (PK)</th>
                 <th scope="col">Date</th>
                 <th scope="col">Name</th>
                 <th scope="col">Value</th>
               </tr>
             </thead>
             <tbody>
-              {
-              Total.map((total) => (
-                <tr key={total.id}>
-                  <th scope="row">{total.id}</th>
+              {Total.map((total) => (
+                <tr key={total.totalID}>
+                  <th scope="row">{total.totalID}</th>
                   <td>{moment(total.date).format("DD/MM/yyyy")}</td>
                   <td>{total.name}</td>
                   <td>{total.value}</td>

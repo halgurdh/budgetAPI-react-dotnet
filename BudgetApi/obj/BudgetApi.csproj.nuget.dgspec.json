@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "G:\\Projects\\budgetAPI-react-dotnet\\BudgetApi\\BudgetApi.csproj": {}
+    "D:\\Projects\\BudgetApi\\BudgetApi\\BudgetApi.csproj": {}
   },
   "projects": {
-    "G:\\Projects\\budgetAPI-react-dotnet\\BudgetApi\\BudgetApi.csproj": {
+    "D:\\Projects\\BudgetApi\\BudgetApi\\BudgetApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Projects\\budgetAPI-react-dotnet\\BudgetApi\\BudgetApi.csproj",
+        "projectUniqueName": "D:\\Projects\\BudgetApi\\BudgetApi\\BudgetApi.csproj",
         "projectName": "BudgetApi",
-        "projectPath": "G:\\Projects\\budgetAPI-react-dotnet\\BudgetApi\\BudgetApi.csproj",
+        "projectPath": "D:\\Projects\\BudgetApi\\BudgetApi\\BudgetApi.csproj",
         "packagesPath": "C:\\Users\\halgu\\.nuget\\packages\\",
-        "outputPath": "G:\\Projects\\budgetAPI-react-dotnet\\BudgetApi\\obj\\",
+        "outputPath": "D:\\Projects\\BudgetApi\\BudgetApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\halgu\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -65,8 +65,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -78,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.305\\RuntimeIdentifierGraph.json"
         }
       }
     }

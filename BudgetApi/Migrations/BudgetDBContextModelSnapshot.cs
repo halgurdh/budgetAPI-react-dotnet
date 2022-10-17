@@ -39,17 +39,17 @@ namespace BudgetApi.Migrations
                     b.HasData(
                         new
                         {
-                            CategoryID = new Guid("86f6d308-a7a4-469b-98bd-6ae7185b6b89"),
+                            CategoryID = new Guid("6820cbeb-ccd5-4c85-99f9-2547185d16d4"),
                             Name = "Rent"
                         },
                         new
                         {
-                            CategoryID = new Guid("ddb6a123-38b1-4614-8116-1c46717f69a0"),
+                            CategoryID = new Guid("0a6a6fc1-6f93-4e81-b3a3-bfebdb7a3857"),
                             Name = "Salary"
                         },
                         new
                         {
-                            CategoryID = new Guid("63a09eba-942a-4d48-aa87-907959aa6a39"),
+                            CategoryID = new Guid("faf74050-74b9-449f-a817-11b30078dc2f"),
                             Name = "Other"
                         });
                 });

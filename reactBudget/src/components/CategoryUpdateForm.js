@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import Constants from "../utilities/Constants";
-import moment from "moment";
 
-export default function IncomeUpdateForm(props) {
-  const [IncomeData, setFormData] = useState({
-    name: props.Income.name,
-    value: props.Income.value,
+export default function CategoryUpdateForm(props) {
+  const [CategoryData, setFormData] = useState({
+    name: props.Category.name,
+    value: props.Category.value,
   });
 
   const handleChange = (e) => {
     setFormData({
-      ...IncomeData,
+      ...CategoryData,
       [e.target.name]: e.target.value,
     });
   };
@@ -18,22 +17,19 @@ export default function IncomeUpdateForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const IncomeToUpdate = {
-      incomeID: props.Income.incomeID,
-      name: IncomeData.name,
-      date: moment(Date.now()).format("yyyy-MM-DD"),
-      value: IncomeData.value,
-      categoryID: props.Income.categoryID,
+    const CategoryToUpdate = {
+      categoryID: props.Category.categoryID,
+      name: CategoryData.name,
     };
 
-    const url = Constants.API_URL_UPDATE_Income;
+    const url = Constants.API_URL_UPDATE_Category;
 
     fetch(url, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(IncomeToUpdate),
+      body: JSON.stringify(CategoryToUpdate),
     })
       .then((response) => response.json())
       .then((responseFromServer) => {
@@ -44,18 +40,18 @@ export default function IncomeUpdateForm(props) {
         alert(error);
       });
 
-    props.onIncomeUpdated(IncomeToUpdate);
+    props.onCategoryUpdated(CategoryToUpdate);
   };
 
   return (
     <div>
       <form className="w-100 px-5">
-        <h1 className="mt-5">Update Espense: "{IncomeData.name}".</h1>
+        <h1 className="mt-5">Update Espense: "{CategoryData.name}".</h1>
 
         <div className="mt-5">
           <label className="h3 form-label">Title</label>
           <input
-            value={IncomeData.name}
+            value={CategoryData.name}
             name="name"
             type="text"
             className="form-control"
@@ -66,7 +62,7 @@ export default function IncomeUpdateForm(props) {
         <div className="mt-4">
           <label className="h3 form-label">Amount</label>
           <input
-            value={IncomeData.value}
+            value={CategoryData.value}
             name="value"
             type="text"
             className="form-control"
@@ -79,7 +75,7 @@ export default function IncomeUpdateForm(props) {
         Submit
       </button>
       <button
-        onClick={() => props.onIncomeUpdated(null)}
+        onClick={() => props.onCategoryUpdated(null)}
         className="btn btn-secondary btn-lg w-100 mt-3"
       >
         Cancel

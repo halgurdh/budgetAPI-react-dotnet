@@ -180,4 +180,4 @@ G:\Projects\budgetAPI-react-dotnet\BudgetApi\obj\Debug\net6.0\refint\BudgetApi.d
 G:\Projects\budgetAPI-react-dotnet\BudgetApi\obj\Debug\net6.0\BudgetApi.pdb
 G:\Projects\budgetAPI-react-dotnet\BudgetApi\obj\Debug\net6.0\BudgetApi.genruntimeconfig.cache
 G:\Projects\budgetAPI-react-dotnet\BudgetApi\obj\Debug\net6.0\ref\BudgetApi.dll
-D:\Projects\BudgetApi\BudgetApi\bin\Debug\net6.0\ref\BudgetApi.dll
+D:\Projects\BudgetApi\BudgetApi\obj\Debug\net6.0\refint\BudgetApi.dll
