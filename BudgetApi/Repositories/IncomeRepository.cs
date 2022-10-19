@@ -12,11 +12,11 @@ namespace BudgetApi.Data
             }
         }
 
-        internal async static Task<Income> GetIncomeById(Guid month)
+        internal async static Task<Income> GetIncomeById(Guid incomeID)
         {
             using (var db = new BudgetDBContext())
             {
-                return await db.Income.FirstOrDefaultAsync(budget => budget.IncomeID == month);
+                return await db.Income.FirstOrDefaultAsync(budget => budget.IncomeID == incomeID);
             }
         }
 
@@ -28,13 +28,13 @@ namespace BudgetApi.Data
             }
         }
 
-        internal async static Task<bool> CreateIncomeAsync(Income expenseToCreate)
+        internal async static Task<bool> CreateIncomeAsync(Income incomeToCreate)
         {
             using (var db = new BudgetDBContext())
             {
                 try
                 {
-                    db.Income.AddAsync(expenseToCreate);
+                    db.Income.AddAsync(incomeToCreate);
 
                     return await db.SaveChangesAsync() >= 1;
                 }
@@ -45,13 +45,13 @@ namespace BudgetApi.Data
             }
         }
 
-        internal async static Task<bool> UpdateIncomeAsync(Income expenseToUpdate)
+        internal async static Task<bool> UpdateIncomeAsync(Income incomeToUpdate)
         {
             using (var db = new BudgetDBContext())
             {
                 try
                 {
-                    db.Income.Update(expenseToUpdate);
+                    db.Income.Update(incomeToUpdate);
 
                     return await db.SaveChangesAsync() >= 1;
                 }
@@ -62,13 +62,13 @@ namespace BudgetApi.Data
             }
         }
 
-        internal async static Task<bool> DeleteIncomeAsync(Guid expenseId)
+        internal async static Task<bool> DeleteIncomeAsync(Guid incomeId)
         {
             using (var db = new BudgetDBContext())
             {
                 try
                 {
-                    Income postToDelete = await GetIncomeById(expenseId);
+                    Income postToDelete = await GetIncomeById(incomeId);
 
                     db.Income.Remove(postToDelete);
 
